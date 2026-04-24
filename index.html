@@ -1,1 +1,255 @@
-<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"><style type="text/css">ol{margin:0;padding:0}table td,table th{padding:0}.c0{padding-top:0pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:left;height:11pt}.c2{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c1{background-color:#ffffff;max-width:498.6pt;padding:28.3pt 56.7pt 28.3pt 56.7pt}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}</style></head><body class="c1 doc-content"><p class="c0"><span class="c2"></span></p></body></html>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Writing Assessment System&lt;/title&gt;
+&lt;style&gt;
+:root {
+--primary: #2980b9;
+--success: #27ae60;
+--error: #e74c3c;
+--warning: #f39c12;
+--bg: #f4f7f6;
+--text: #2c3e50;
+}
+body {
+font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+background-color: var(--bg);
+color: var(--text);
+margin: 0;
+padding: 20px;
+display: flex;
+justify-content: center;
+}
+.container {
+max-width: 800px;
+width: 100%;
+background: white;
+padding: 40px;
+border-radius: 16px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+header { text-align: center; border-bottom: 2px solid #eee; margin-
+bottom: 25px; padding-bottom: 10px; }
+.student-info-grid {
+display: grid;
+
+grid-template-columns: 1fr 1fr 1fr;
+gap: 10px;
+margin-bottom: 20px;
+}
+input {
+padding: 12px;
+border: 2px solid #ddd;
+border-radius: 8px;
+font-size: 0.9rem;
+width: 100%;
+box-sizing: border-box;
+}
+.instruction-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-bottom: 20px;
+}
+.box { padding: 15px; border-radius: 10px; font-size: 0.85rem; line-
+height: 1.4; }
+.instructions { background: #fff9db; border: 1px solid #f1c40f; }
+.vocabulary { background: #e8f8f5; border: 1px solid #2ecc71; }
+.model { background: #fdf2e9; border: 1px solid #e67e22; grid-column:
+span 2; color: #d35400; font-weight: 500; }
+.writing-zone { position: relative; }
+textarea {
+width: 100%;
+height: 200px;
+padding: 20px;
+font-size: 1.1rem;
+border: 2px solid #ddd;
+border-radius: 12px;
+resize: none;
+box-sizing: border-box;
+transition: 0.3s;
+font-family: inherit;
+}
+.word-counter {
+
+position: absolute;
+bottom: 15px;
+right: 15px;
+padding: 5px 12px;
+border-radius: 20px;
+font-weight: bold;
+font-size: 0.8rem;
+background: #eee;
+}
+.btn-submit {
+width: 100%;
+padding: 18px;
+background: var(--primary);
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 1.1rem;
+font-weight: bold;
+cursor: pointer;
+margin-top: 20px;
+transition: 0.3s;
+}
+.btn-submit:disabled { background: #bdc3c7; cursor: not-allowed; }
+#feedbackArea {
+margin-top: 30px;
+display: none;
+padding: 25px;
+border-radius: 12px;
+background: #f9f9f9;
+border: 2px solid #eee;
+}
+.report-title { font-weight: bold; display: block; margin-top: 15px; margin-
+bottom: 8px; color: var(--primary); font-size: 1.1rem; }
+.feedback-list { padding-left: 20px; margin: 0; }
+.feedback-list li { margin-bottom: 8px; line-height: 1.4; }
+.improve { color: #d35400; font-weight: 600; }
+.correct { color: var(--success); font-weight: 600; }
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;header&gt;
+&lt;h1&gt;Writing Assessment: Daily Routine&lt;/h1&gt;
+&lt;p&gt;Please enter your details and complete the writing task.&lt;/p&gt;
+&lt;/header&gt;
+&lt;div id=&quot;blockMessage&quot; style=&quot;display:none; color: var(--error); text-align:
+center; font-weight: bold; margin-bottom: 20px; padding: 15px; border: 1px
+solid var(--error); border-radius: 8px; background-color: #fdeaea;&quot;&gt;
+⚠️ You have already submitted this task. Only one submission is
+allowed per student.
+&lt;/div&gt;
+&lt;div class=&quot;student-info-grid&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;firstName&quot; placeholder=&quot;First Name&quot; required&gt;
+&lt;input type=&quot;text&quot; id=&quot;lastName&quot; placeholder=&quot;Last Name&quot; required&gt;
+&lt;input type=&quot;text&quot; id=&quot;course&quot; placeholder=&quot;Class / Grade&quot; required&gt;
+&lt;/div&gt;
+&lt;div class=&quot;instruction-grid&quot;&gt;
+&lt;div class=&quot;box instructions&quot;&gt;&lt;strong&gt;�� Rules:&lt;/strong&gt; 40-60 words.
+Use Present Simple and connectors (and, but, because).&lt;/div&gt;
+&lt;div class=&quot;box vocabulary&quot;&gt;&lt;strong&gt;�� Keywords:&lt;/strong&gt; wake up,
+school, lunch, happy, study, then.&lt;/div&gt;
+&lt;div class=&quot;box model&quot;&gt;
+&lt;strong&gt;�� Absurd Example (DO NOT COPY):&lt;/strong&gt; &lt;br&gt;
+&quot;I wake up at 3:00 am and I go to Mars. I eat blue screws for lunch
+because I am a robot...&quot;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;writing-zone&quot;&gt;
+&lt;textarea id=&quot;writingBox&quot; placeholder=&quot;Write your daily routine
+here...&quot;&gt;&lt;/textarea&gt;
+&lt;div id=&quot;counter&quot; class=&quot;word-counter&quot;&gt;Words: 0 / 40-60&lt;/div&gt;
+&lt;/div&gt;
+&lt;button id=&quot;submitBtn&quot; class=&quot;btn-submit&quot;
+onclick=&quot;processSubmission()&quot;&gt;Submit &amp; View Feedback&lt;/button&gt;
+&lt;div id=&quot;feedbackArea&quot;&gt;
+
+&lt;h2 style=&quot;text-align: center; color: var(--text); border-bottom: 2px solid
+#ddd; padding-bottom: 10px;&quot;&gt;Feedback Report&lt;/h2&gt;
+&lt;div&gt;
+&lt;span class=&quot;report-title&quot;&gt;�� Suggestions for improvement:&lt;/span&gt;
+&lt;ul id=&quot;improveList&quot; class=&quot;feedback-list&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;span class=&quot;report-title&quot;&gt;✅ Strengths:&lt;/span&gt;
+&lt;ul id=&quot;correctList&quot; class=&quot;feedback-list&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const scriptURL = &quot;https://script.google.com/macros/s/AKfycby-
+0PHNKPAI-eq766H9GF8aKQ5YDi5omxdx28s94LjnOxrQH7J5x-
+L6cw4YJGBP9wxxOQ/exec&quot;;
+window.onload = () =&gt; {
+if (localStorage.getItem(&quot;assignment_completed&quot;) === &quot;true&quot;) {
+document.getElementById(&#39;submitBtn&#39;).disabled = true;
+document.getElementById(&#39;writingBox&#39;).disabled = true;
+document.getElementById(&#39;blockMessage&#39;).style.display = &#39;block&#39;;
+}
+};
+document.getElementById(&#39;writingBox&#39;).addEventListener(&#39;input&#39;,
+function() {
+const words = this.value.trim().split(/\s+/).filter(w =&gt; w.length &gt;
+0).length;
+const counter = document.getElementById(&#39;counter&#39;);
+counter.innerText = `Words: ${words} / 40-60`;
+counter.style.color = (words &gt;= 40 &amp;&amp; words &lt;= 60) ? &quot;var(--success)&quot; :
+&quot;var(--error)&quot;;
+});
+async function processSubmission() {
+const text = document.getElementById(&#39;writingBox&#39;).value.trim();
+const fName = document.getElementById(&#39;firstName&#39;).value.trim();
+const lName = document.getElementById(&#39;lastName&#39;).value.trim();
+const course = document.getElementById(&#39;course&#39;).value.trim();
+const words = text.split(/\s+/).filter(w =&gt; w.length &gt; 0);
+
+if (!fName || !lName || !course || !text) return alert(&quot;Please fill in all the
+fields.&quot;);
+if (words.length &lt; 10) return alert(&quot;Your text is too short.&quot;);
+// PLAGIARISM CHECK
+const forbidden = [&quot;mars&quot;, &quot;screws&quot;, &quot;robot&quot;, &quot;alien&quot;, &quot;blue screws&quot;];
+if (forbidden.some(word =&gt; text.toLowerCase().includes(word))) {
+return alert(&quot;❌ PLAGIARISM DETECTED: Please write your own real
+routine. Do not use the Mars or screws example.&quot;);
+}
+const improve = [];
+const correct = [];
+// Analysis Logic
+if (words.length &lt; 40 || words.length &gt; 60) {
+improve.push(`&lt;span class=&quot;improve&quot;&gt;Length:&lt;/span&gt; Your text has
+${words.length} words. Aim for 40-60.`);
+} else {
+correct.push(&quot;Great job! You met the required word count.&quot;);
+}
+if (/\bI\s+wakes\b/i.test(text)) improve.push(`&lt;span
+class=&quot;improve&quot;&gt;Grammar:&lt;/span&gt; Use &quot;I wake&quot;, not &quot;wakes&quot;.`);
+if (/\bgo school\b/i.test(text)) improve.push(`&lt;span
+class=&quot;improve&quot;&gt;Structure:&lt;/span&gt; Remember to use &quot;go TO school&quot;.`);
+if (!/\b(and|but|because|then|finally)\b/i.test(text)) improve.push(`&lt;span
+class=&quot;improve&quot;&gt;Connectors:&lt;/span&gt; Try using linking words (and, but,
+then).`);
+else correct.push(&quot;Good use of connectors to link your ideas.&quot;);
+if (/\b(morning|afternoon|night|evening)\b/i.test(text)) correct.push(&quot;Nice
+use of time expressions.&quot;);
+else improve.push(`&lt;span class=&quot;improve&quot;&gt;Vocabulary:&lt;/span&gt; You
+could include times of the day (in the morning, at night, etc.).`);
+// Render Feedback
+document.getElementById(&#39;improveList&#39;).innerHTML = improve.map(i
+=&gt; `&lt;li&gt;${i}&lt;/li&gt;`).join(&#39;&#39;) || &quot;&lt;li&gt;Well done! No critical errors detected.&lt;/li&gt;&quot;;
+document.getElementById(&#39;correctList&#39;).innerHTML = correct.map(c =&gt;
+`&lt;li&gt;${c}&lt;/li&gt;`).join(&#39;&#39;) || &quot;&lt;li&gt;Keep practicing to keep improving.&lt;/li&gt;&quot;;
+document.getElementById(&#39;feedbackArea&#39;).style.display = &#39;block&#39;;
+
+const btn = document.getElementById(&#39;submitBtn&#39;);
+btn.innerText = &quot;Submitting...&quot;;
+btn.disabled = true;
+try {
+await fetch(scriptURL, {
+method: &#39;POST&#39;,
+mode: &#39;no-cors&#39;,
+body: JSON.stringify({ firstName: fName, lastName: lName,
+course: course, text: text }),
+headers: { &#39;Content-Type&#39;: &#39;application/json&#39; }
+});
+localStorage.setItem(&quot;assignment_completed&quot;, &quot;true&quot;);
+alert(&quot;✅ Task successfully submitted to your teacher!&quot;);
+btn.innerText = &quot;Task Submitted&quot;;
+} catch (e) {
+alert(&quot;Error saving to Drive. However, you can see your feedback
+below.&quot;);
+btn.disabled = false;
+btn.innerText = &quot;Retry Submission&quot;;
+}
+document.getElementById(&#39;feedbackArea&#39;).scrollIntoView({ behavior:
+&#39;smooth&#39; });
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
