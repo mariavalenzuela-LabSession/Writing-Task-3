@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing Assessment: Wedding Reply</title>
+    <title>Writing Task 3 - Email Reply</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -80,7 +80,7 @@
 
 <div class="container">
     <header>
-        <h1>Writing Task: Wedding Reply</h1>
+        <h1>Writing Task 3 - Email Reply</h1>
         <p>Choose your name, write your email, and download the file for Classroom.</p>
     </header>
 
@@ -130,7 +130,6 @@
 </div>
 
 <script>
-    // Full student lists for 7A, 7B, 7C
     const students = {
         "7A": ["Abarca Nuñez Florencia Ayelén", "Alfaro Cuevas Agustina Paz", "Argote Luza Amanda Leonor", "Arias Alegría Gustavo León", "Barrera León Antonia Paz", "Barriga Fernández Alex Eduardo", "Castillo Herrera Javier David", "Castro Mincone Emilia Alessandra", "Celis Canales Santiago", "Cortés Cabello Clemente Nicolás", "Del Río Fernández Santiago Isaac", "Fuentes Ramírez Alejandro Ignacio", "González Arriagada Joaquín Alonso", "González Yáñez Lorenzo Tomás", "Guerrero Bustamante Vicente", "Hinojosa Carrasco Victoria Antonia", "Hiplan Godoy Rafaella Francisca", "Iglesias Guerrero Maite Agustina", "Jiménez Monsalves Laura Elena", "Méndez Fernández Violeta Millaray", "Montenegro Uribarri Agustina Paz", "Muñoz Espinoza Mariano Emilio", "Neira Orellana Nicolás Andrés", "Norambuena Garcés Matías Clemente", "Núñez Zamora Florencia Antonia", "Pérez Escobar Emilia Andrea", "Ramírez Cartagena Mateo Ignacio", "Ramírez Oliva Amaro Andrés", "Reffer Horvath Ignacio Javier", "Retamal Leiva Maximiliano Antonio", "Reyes Bravo María Vicenta", "Reyes Urrea Alicia Cristina", "Sánchez Ramírez Cristobal Guillermo", "Veizaga Ruiz Darío Alonso", "Véliz Cortés Josefina Viviana"],
         "7B": ["Álvarez de Araya Almarza Bruno Ignacio", "Araya Espinoza Bárbara Yudich", "Araya Seguel Javier Ignacio", "Arias Alegría Felipe Roberto", "Arriaza Marsh Paz Emilia", "Barbaste Escalante Emma Leonor", "Barrera Jaque Trinidad Ignacia", "Calderón Palma José Agustín", "Campusano Pérez Francisca Almudena", "Castro Jara Matías Ignacio", "Contreras Arriagada Juan Pablo", "Cortés Díaz Joaquín Alonso", "Díaz Cortés Gaspar Ignacio", "Espinoza Cornejo Fernanda Isidora", "Figueroa Cárdenas Rafaela Sofía", "Figueroa Salazar Cristóbal Javier", "Hernández Leiva Emiliana Catalina", "Lasserre Rodriguez Clara Belén", "Maira Péndola Facundo Alfonso", "Martini Sutherland Isabella Francesca Rosetta", "Moraga Martínez Fernanda Paz", "Neyra Anabalón Vicente Alonso", "Olea Leiva Elisa Magdalena", "Olivares Sánchez Pablo Ignacio", "Orellana García Cristóbal Felipe", "Oviedo Obreque Camila Antonia", "Pacheco Palma Matías Ignacio", "Palma Péndola Gonzalo Alonzo", "Pérez Madariaga Nicolás Maximiliano", "Reyes Briones Lucas Javier", "Saldivia San Martín Emilio Alberto", "Urrutia González Amanda Florencia", "Valdenegro Román Cristóbal Tomás", "Valdés Vergara Gastón Emilio", "Valverde Véliz Santiago Alonso", "Vásquez Reyes María José Valentina", "Wood Corrales Andrew Benjamín Buchanan"],
@@ -152,7 +151,6 @@
         } else { studentSelect.disabled = true; }
     }
 
-    // Word counter implementation
     document.getElementById('writingBox').addEventListener('input', function() {
         const words = this.value.trim().split(/\s+/).filter(w => w.length > 0).length;
         const counter = document.getElementById('counter');
@@ -168,27 +166,24 @@
 
         if (!fullName || !course || !text) return alert("Please select your class/name and write your email before downloading.");
 
-        // Show feedback report
         showFeedback(text, words.length);
 
         const date = new Date().toLocaleDateString('en-US');
 
-        // Document Content Construction (HTML-Word Hybrid)
         const docContent = `
             <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-            <head><meta charset='utf-8'><title>Writing Task Submission</title>
+            <head><meta charset='utf-8'><title>Writing Task 3 Submission</title>
             <style>
                 body { font-family: 'Calibri', 'Arial', sans-serif; padding: 40px; }
                 .header { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; }
                 .meta { background-color: #f2f2f2; padding: 15px; border: 1px solid #ddd; margin-bottom: 30px; }
-                .meta p { margin: 5px 0; }
                 .response { font-size: 12pt; line-height: 1.6; color: #000; border: 1px solid #eee; padding: 20px; }
                 h1 { color: #2c3e50; margin: 0; }
             </style>
             </head>
             <body>
                 <div class="header">
-                    <h1>Writing Assessment: Wedding Reply</h1>
+                    <h1>Writing Task 3 - Email Reply</h1>
                 </div>
                 <div class="meta">
                     <p><b>Student Name:</b> ${fullName}</p>
@@ -202,12 +197,11 @@
             </html>
         `;
 
-        // Create the download link
         const blob = new Blob(['\ufeff', docContent], { type: 'application/msword' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `Writing_Task_${fullName.replace(/ /g, '_')}.doc`;
+        link.download = `Writing_Task_3_Email_Reply_${fullName.replace(/ /g, '_')}.doc`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
