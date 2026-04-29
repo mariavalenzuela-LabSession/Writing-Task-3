@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing Task: Wedding Reply - Classroom Version</title>
+    <title>Writing Assessment: Wedding Reply</title>
     <style>
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
             --success: #27ae60;
             --error: #e74c3c;
-            --bg: #f8f9fa;
+            --bg: #f4f7f6;
+            --text: #333;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: #333; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 800px; width: 100%; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         
-        header { text-align: center; border-bottom: 2px solid #eee; margin-bottom: 20px; padding-bottom: 10px; }
+        header { text-align: center; border-bottom: 2px solid #eee; margin-bottom: 25px; padding-bottom: 10px; }
         
         .email-prompt {
             background-color: #fff9db;
             border-left: 5px solid #f1c40f;
             padding: 20px;
             margin-bottom: 25px;
-            border-radius: 4px;
+            border-radius: 8px;
             font-style: italic;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: #5d4037;
         }
 
         .student-selection {
@@ -41,14 +43,15 @@
             font-size: 1rem;
             box-sizing: border-box;
             outline: none;
+            transition: 0.2s;
         }
-        select:focus, textarea:focus { border-color: var(--secondary); }
+        select:focus, textarea:focus { border-color: var(--secondary); box-shadow: 0 0 5px rgba(52,152,219,0.3); }
 
         .instruction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .box { padding: 15px; border-radius: 8px; font-size: 0.85rem; line-height: 1.4; border: 1px solid #ddd; background: #fff; }
+        .box { padding: 15px; border-radius: 10px; font-size: 0.85rem; line-height: 1.4; border: 1px solid #ddd; background: #fff; }
         
         .writing-zone { position: relative; }
-        textarea { height: 250px; resize: none; font-size: 1.1rem; padding: 15px; font-family: inherit; line-height: 1.5; }
+        textarea { height: 250px; resize: none; font-size: 1.1rem; padding: 20px; font-family: inherit; line-height: 1.5; }
         
         .word-counter { 
             position: absolute; bottom: 15px; right: 15px; padding: 5px 12px; 
@@ -57,20 +60,20 @@
         
         .btn-download { 
             width: 100%; padding: 18px; background: var(--success); color: white; 
-            border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; 
+            border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; 
             cursor: pointer; margin-top: 20px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .btn-download:hover { background: #219150; transform: translateY(-2px); }
+        .btn-download:hover { background: #219150; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(39,174,96,0.3); }
         .btn-download:active { transform: translateY(0); }
 
         #feedbackArea { 
-            margin-top: 30px; display: none; padding: 20px; 
-            border-radius: 8px; background: #fdfdfd; border: 1px solid #ddd; 
+            margin-top: 30px; display: none; padding: 25px; 
+            border-radius: 12px; background: #fdfdfd; border: 1px solid #eee; 
         }
-        .feedback-list { list-style: none; padding: 0; }
-        .feedback-list li { margin-bottom: 8px; padding: 10px; border-radius: 4px; font-size: 0.9rem; }
-        .improve { background: #fff5f5; color: #c53030; border-left: 4px solid #fc8181; }
-        .correct { background: #f0fff4; color: #276749; border-left: 4px solid #68d391; }
+        .feedback-list { list-style: none; padding: 0; margin: 0; }
+        .feedback-list li { margin-bottom: 10px; padding: 12px; border-radius: 8px; font-size: 0.95rem; }
+        .improve { background: #fff5f5; color: #c53030; border-left: 5px solid #fc8181; }
+        .correct { background: #f0fff4; color: #276749; border-left: 5px solid #68d391; }
     </style>
 </head>
 <body>
@@ -78,55 +81,56 @@
 <div class="container">
     <header>
         <h1>Writing Task: Wedding Reply</h1>
-        <p>Selecciona tu nombre, escribe tu respuesta y descarga el archivo para tu Classroom.</p>
+        <p>Choose your name, write your email, and download the file for Classroom.</p>
     </header>
 
     <div class="email-prompt">
-        <strong>De: Maxi</strong><br>
+        <strong>From: Maxi</strong><br>
         "I’ve received a wedding invitation from your brother. It’s so nice of him! Can you suggest a place in your city where I can stay? What do people usually wear to weddings in your country? What can I buy them for a present?"
     </div>
 
     <div class="student-selection">
         <select id="courseSelect" onchange="updateStudentList()">
-            <option value="">1. Selecciona tu Curso</option>
+            <option value="">1. Select Class</option>
             <option value="7A">7A</option>
             <option value="7B">7B</option>
             <option value="7C">7C</option>
         </select>
         <select id="studentSelect" disabled>
-            <option value="">2. Selecciona tu Nombre</option>
+            <option value="">2. Select Your Name</option>
         </select>
     </div>
 
     <div class="instruction-grid">
         <div class="box">
-            <strong>📏 Criterios de Evaluación:</strong><br>
-            • Extensión: 40 - 60 palabras.<br>
-            • Contenido: Responder las 3 preguntas.<br>
-            • Conectores: Usar (and, but, because).
+            <strong>📏 Requirements:</strong><br>
+            • Length: 40 - 60 words.<br>
+            • Content: Answer all 3 questions.<br>
+            • Connectors: Use (and, but, because).
         </div>
         <div class="box">
-            <strong>📥 Entrega Classroom:</strong><br>
-            Al finalizar, presiona el botón verde. Se descargará un archivo Word que debes subir a la plataforma Classroom.
+            <strong>📥 Classroom Submission:</strong><br>
+            When finished, click the green button. A Word file will download. Upload that file to your Google Classroom assignment.
         </div>
     </div>
 
     <div class="writing-zone">
-        <textarea id="writingBox" placeholder="Escribe tu respuesta a Maxi aquí..."></textarea>
-        <div id="counter" class="word-counter">Palabras: 0 / 40-60</div>
+        <textarea id="writingBox" placeholder="Start writing your reply here..."></textarea>
+        <div id="counter" class="word-counter">Words: 0 / 40-60</div>
     </div>
 
     <button class="btn-download" onclick="generateWord()">
-        <span>📥</span> Descargar Word para Classroom
+        <span>📥</span> Download Word for Classroom
     </button>
 
     <div id="feedbackArea">
-        <h3 style="margin-top:0; color: var(--primary);">Revisión de Requisitos:</h3>
+        <h3 style="margin-top:0; color: var(--primary);">Self-Correction Checklist:</h3>
         <ul id="feedbackList" class="feedback-list"></ul>
     </div>
 </div>
 
 <script>
+    // Full student lists for 7A, 7B, 7C
     const students = {
         "7A": ["Abarca Nuñez Florencia Ayelén", "Alfaro Cuevas Agustina Paz", "Argote Luza Amanda Leonor", "Arias Alegría Gustavo León", "Barrera León Antonia Paz", "Barriga Fernández Alex Eduardo", "Castillo Herrera Javier David", "Castro Mincone Emilia Alessandra", "Celis Canales Santiago", "Cortés Cabello Clemente Nicolás", "Del Río Fernández Santiago Isaac", "Fuentes Ramírez Alejandro Ignacio", "González Arriagada Joaquín Alonso", "González Yáñez Lorenzo Tomás", "Guerrero Bustamante Vicente", "Hinojosa Carrasco Victoria Antonia", "Hiplan Godoy Rafaella Francisca", "Iglesias Guerrero Maite Agustina", "Jiménez Monsalves Laura Elena", "Méndez Fernández Violeta Millaray", "Montenegro Uribarri Agustina Paz", "Muñoz Espinoza Mariano Emilio", "Neira Orellana Nicolás Andrés", "Norambuena Garcés Matías Clemente", "Núñez Zamora Florencia Antonia", "Pérez Escobar Emilia Andrea", "Ramírez Cartagena Mateo Ignacio", "Ramírez Oliva Amaro Andrés", "Reffer Horvath Ignacio Javier", "Retamal Leiva Maximiliano Antonio", "Reyes Bravo María Vicenta", "Reyes Urrea Alicia Cristina", "Sánchez Ramírez Cristobal Guillermo", "Veizaga Ruiz Darío Alonso", "Véliz Cortés Josefina Viviana"],
         "7B": ["Álvarez de Araya Almarza Bruno Ignacio", "Araya Espinoza Bárbara Yudich", "Araya Seguel Javier Ignacio", "Arias Alegría Felipe Roberto", "Arriaza Marsh Paz Emilia", "Barbaste Escalante Emma Leonor", "Barrera Jaque Trinidad Ignacia", "Calderón Palma José Agustín", "Campusano Pérez Francisca Almudena", "Castro Jara Matías Ignacio", "Contreras Arriagada Juan Pablo", "Cortés Díaz Joaquín Alonso", "Díaz Cortés Gaspar Ignacio", "Espinoza Cornejo Fernanda Isidora", "Figueroa Cárdenas Rafaela Sofía", "Figueroa Salazar Cristóbal Javier", "Hernández Leiva Emiliana Catalina", "Lasserre Rodriguez Clara Belén", "Maira Péndola Facundo Alfonso", "Martini Sutherland Isabella Francesca Rosetta", "Moraga Martínez Fernanda Paz", "Neyra Anabalón Vicente Alonso", "Olea Leiva Elisa Magdalena", "Olivares Sánchez Pablo Ignacio", "Orellana García Cristóbal Felipe", "Oviedo Obreque Camila Antonia", "Pacheco Palma Matías Ignacio", "Palma Péndola Gonzalo Alonzo", "Pérez Madariaga Nicolás Maximiliano", "Reyes Briones Lucas Javier", "Saldivia San Martín Emilio Alberto", "Urrutia González Amanda Florencia", "Valdenegro Román Cristóbal Tomás", "Valdés Vergara Gastón Emilio", "Valverde Véliz Santiago Alonso", "Vásquez Reyes María José Valentina", "Wood Corrales Andrew Benjamín Buchanan"],
@@ -136,7 +140,7 @@
     function updateStudentList() {
         const course = document.getElementById('courseSelect').value;
         const studentSelect = document.getElementById('studentSelect');
-        studentSelect.innerHTML = '<option value="">2. Selecciona tu Nombre</option>';
+        studentSelect.innerHTML = '<option value="">2. Select Your Name</option>';
         if (course) {
             students[course].sort().forEach(name => {
                 let opt = document.createElement('option');
@@ -148,10 +152,11 @@
         } else { studentSelect.disabled = true; }
     }
 
+    // Word counter implementation
     document.getElementById('writingBox').addEventListener('input', function() {
         const words = this.value.trim().split(/\s+/).filter(w => w.length > 0).length;
         const counter = document.getElementById('counter');
-        counter.innerText = `Palabras: ${words} / 40-60`;
+        counter.innerText = `Words: ${words} / 40-60`;
         counter.style.color = (words >= 40 && words <= 60) ? "var(--success)" : "var(--error)";
     });
 
@@ -161,50 +166,48 @@
         const course = document.getElementById('courseSelect').value;
         const words = text.split(/\s+/).filter(w => w.length > 0);
 
-        if (!fullName || !course || !text) return alert("Por favor selecciona tu nombre y escribe la respuesta antes de descargar.");
+        if (!fullName || !course || !text) return alert("Please select your class/name and write your email before downloading.");
 
-        // Ejecutar Análisis Visual
+        // Show feedback report
         showFeedback(text, words.length);
 
-        // Formatear Fecha
-        const date = new Date().toLocaleDateString('es-CL');
+        const date = new Date().toLocaleDateString('en-US');
 
-        // Contenido HTML para el Word
+        // Document Content Construction (HTML-Word Hybrid)
         const docContent = `
             <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-            <head><meta charset='utf-8'><title>Writing Task</title>
+            <head><meta charset='utf-8'><title>Writing Task Submission</title>
             <style>
-                body { font-family: 'Calibri', 'Arial', sans-serif; padding: 50px; }
+                body { font-family: 'Calibri', 'Arial', sans-serif; padding: 40px; }
                 .header { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; }
-                .student-data { background-color: #f2f2f2; padding: 15px; border-radius: 5px; margin-bottom: 30px; }
-                .text-body { font-size: 12pt; line-height: 1.6; color: #333; }
-                h1 { color: #2c3e50; font-size: 18pt; }
-                .footer { margin-top: 50px; font-size: 9pt; color: #7f8c8d; border-top: 1px solid #eee; padding-top: 10px; }
+                .meta { background-color: #f2f2f2; padding: 15px; border: 1px solid #ddd; margin-bottom: 30px; }
+                .meta p { margin: 5px 0; }
+                .response { font-size: 12pt; line-height: 1.6; color: #000; border: 1px solid #eee; padding: 20px; }
+                h1 { color: #2c3e50; margin: 0; }
             </style>
             </head>
             <body>
                 <div class="header">
                     <h1>Writing Assessment: Wedding Reply</h1>
                 </div>
-                <div class="student-data">
+                <div class="meta">
                     <p><b>Student Name:</b> ${fullName}</p>
-                    <p><b>Course:</b> ${course}</p>
+                    <p><b>Class:</b> ${course}</p>
                     <p><b>Date:</b> ${date}</p>
                     <p><b>Word Count:</b> ${words.length} words</p>
                 </div>
-                <h3>Student's Response:</h3>
-                <div class="text-body">${text.replace(/\n/g, '<br>')}</div>
-                <div class="footer">Documento generado automáticamente para entrega en Google Classroom.</div>
+                <h3>Your Response to Maxi:</h3>
+                <div class="response">${text.replace(/\n/g, '<br>')}</div>
             </body>
             </html>
         `;
 
-        // Crear Blob y descargar
+        // Create the download link
         const blob = new Blob(['\ufeff', docContent], { type: 'application/msword' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `English_Writing_${fullName.replace(/ /g, '_')}.doc`;
+        link.download = `Writing_Task_${fullName.replace(/ /g, '_')}.doc`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -215,11 +218,11 @@
         feedbackList.innerHTML = "";
         
         const checks = [
-            { cond: count >= 40 && count <= 60, ok: "Largo correcto (40-60 palabras).", err: `Largo: Tienes ${count} palabras (el rango es 40-60).` },
-            { cond: /\b(stay|hotel|house|apartment|place|hostel)\b/i.test(text), ok: "Respondiste sobre el lugar de estadía.", err: "Te falta sugerir dónde quedarse (stay/hotel)." },
-            { cond: /\b(wear|suit|dress|clothes|formal|casual)\b/i.test(text), ok: "Respondiste sobre la vestimenta.", err: "Te falta mencionar qué ropa usar (wear/clothes)." },
-            { cond: /\b(buy|gift|present|give)\b/i.test(text), ok: "Sugeriste un regalo.", err: "Te falta sugerir qué comprar de regalo (gift/present)." },
-            { cond: /\b(and|but|because|then|so)\b/i.test(text), ok: "Estás usando conectores correctamente.", err: "Recuerda usar conectores (and, but, because)." }
+            { cond: count >= 40 && count <= 60, ok: "Word count is within the target (40-60).", err: `Word count: You have ${count} words (Target: 40-60).` },
+            { cond: /\b(stay|hotel|house|apartment|place|hostel)\b/i.test(text), ok: "You suggested a place to stay.", err: "Content: You forgot to suggest where to stay (hotel/house)." },
+            { cond: /\b(wear|suit|dress|clothes|formal)\b/i.test(text), ok: "You mentioned what to wear.", err: "Content: You forgot to mention what to wear (clothes/suit/dress)." },
+            { cond: /\b(buy|gift|present|give)\b/i.test(text), ok: "You suggested a present.", err: "Content: You forgot to suggest a gift (present/gift)." },
+            { cond: /\b(and|but|because|then|so)\b/i.test(text), ok: "You used connecting words.", err: "Grammar: Try using connectors like 'and', 'but', or 'because'." }
         ];
 
         checks.forEach(c => {
@@ -230,6 +233,7 @@
         });
 
         document.getElementById('feedbackArea').style.display = 'block';
+        document.getElementById('feedbackArea').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 </body>
