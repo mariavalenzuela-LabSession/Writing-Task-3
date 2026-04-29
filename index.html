@@ -3,129 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing Assessment: Email Reply</title>
+    <title>Writing Assessment: Wedding Reply</title>
     <style>
         :root {
             --primary: #2980b9;
             --success: #27ae60;
             --error: #e74c3c;
-            --warning: #f39c12;
             --bg: #f4f7f6;
             --text: #2c3e50;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        header { text-align: center; border-bottom: 2px solid #eee; margin-bottom: 25px; padding-bottom: 10px; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        header { text-align: center; border-bottom: 2px solid #eee; margin-bottom: 25px; }
         
-        .student-info-grid {
+        .student-selection {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        input {
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .instruction-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 15px;
             margin-bottom: 20px;
         }
-        .box { padding: 15px; border-radius: 10px; font-size: 0.85rem; line-height: 1.4; }
-        .instructions { background: #fff9db; border: 1px solid #f1c40f; }
-        .vocabulary { background: #e8f8f5; border: 1px solid #2ecc71; }
-        .prompt-box { background: #f0f7ff; border: 1px solid #3498db; grid-column: span 2; color: #2980b9; }
-
-        .writing-zone { position: relative; }
-        textarea {
+        select, textarea {
             width: 100%;
-            height: 200px;
-            padding: 20px;
-            font-size: 1.1rem;
+            padding: 12px;
             border: 2px solid #ddd;
-            border-radius: 12px;
-            resize: none;
+            border-radius: 8px;
+            font-size: 1rem;
             box-sizing: border-box;
-            transition: 0.3s;
-            font-family: inherit;
         }
-        .word-counter {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            background: #eee;
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-        .btn-submit:disabled { background: #bdc3c7; cursor: not-allowed; }
-        
-        #feedbackArea {
-            margin-top: 30px;
-            display: none;
-            padding: 25px;
-            border-radius: 12px;
-            background: #f9f9f9;
-            border: 2px solid #eee;
-        }
-        .report-title { font-weight: bold; display: block; margin-top: 15px; margin-bottom: 8px; color: var(--primary); font-size: 1.1rem; }
-        .feedback-list { padding-left: 20px; margin: 0; }
-        .feedback-list li { margin-bottom: 8px; line-height: 1.4; }
+        .instruction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .box { padding: 15px; border-radius: 10px; font-size: 0.85rem; line-height: 1.4; }
+        .prompt-box { background: #f0f7ff; border: 1px solid #3498db; grid-column: span 2; color: #2980b9; }
+        .writing-zone { position: relative; }
+        textarea { height: 200px; resize: none; font-size: 1.1rem; }
+        .word-counter { position: absolute; bottom: 15px; right: 15px; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; background: #eee; }
+        .btn-submit { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .btn-submit:disabled { background: #bdc3c7; }
+        #feedbackArea { margin-top: 30px; display: none; padding: 25px; border-radius: 12px; background: #f9f9f9; border: 2px solid #eee; }
         .improve { color: #d35400; font-weight: 600; }
         .correct { color: var(--success); font-weight: 600; }
     </style>
 </head>
-
 <body>
+
 <div class="container">
     <header>
         <h1>Email Task: Wedding Reply</h1>
-        <p>Reply to Maxi's email using the requirements below.</p>
+        <p>Select your name and complete the task.</p>
     </header>
 
     <div id="blockMessage" style="display:none; color: var(--error); text-align: center; font-weight: bold; margin-bottom: 20px; padding: 15px; border: 1px solid var(--error); border-radius: 8px; background-color: #fdeaea;">
-        ⚠️ You have already submitted this task.
+        ⚠️ Ya has enviado esta tarea.
     </div>
 
-    <div class="student-info-grid">
-        <input type="text" id="firstName" placeholder="First Name" required>
-        <input type="text" id="lastName" placeholder="Last Name" required>
-        <input type="text" id="course" placeholder="Class / Grade" required>
+    <div class="student-selection">
+        <select id="courseSelect" onchange="updateStudentList()">
+            <option value="">Select Class</option>
+            <option value="7A">7A</option>
+            <option value="7B">7B</option>
+            <option value="7C">7C</option>
+        </select>
+        <select id="studentSelect" disabled>
+            <option value="">Select your name</option>
+        </select>
     </div>
 
     <div class="instruction-grid">
@@ -133,49 +72,47 @@
             <strong>📧 Message from Maxi:</strong><br>
             "Can you suggest a place where I can stay? What do people usually wear to weddings in your country? What can I buy them for a present?"
         </div>
-        <div class="box instructions">
-            <strong>📏 Rules:</strong><br>
-            - 40 to 60 words.<br>
-            - Answer all 3 questions.<br>
-            - Use connectors (and, but, because).
-        </div>
-        <div class="box vocabulary">
-            <strong>🔑 Useful Words:</strong><br>
-            Stay, hotel, clothes, suit, gift, present, because, also.
-        </div>
     </div>
 
     <div class="writing-zone">
-        <textarea id="writingBox" placeholder="Write your email reply here..."></textarea>
+        <textarea id="writingBox" placeholder="Write your email here..."></textarea>
         <div id="counter" class="word-counter">Words: 0 / 40-60</div>
     </div>
 
     <button id="submitBtn" class="btn-submit" onclick="processSubmission()">Submit & View Feedback</button>
 
     <div id="feedbackArea">
-        <h2 style="text-align: center; color: var(--text); border-bottom: 2px solid #ddd; padding-bottom: 10px;">Feedback Report</h2>
-        <div>
-            <span class="report-title">💡 Suggestions for improvement:</span>
-            <ul id="improveList" class="feedback-list"></ul>
-        </div>
-        <div>
-            <span class="report-title">✅ Strengths:</span>
-            <ul id="correctList" class="feedback-list"></ul>
-        </div>
+        <h2 style="text-align: center;">Feedback Report</h2>
+        <ul id="improveList"></ul>
+        <ul id="correctList"></ul>
     </div>
 </div>
 
 <script>
-    // Paste your Google Apps Script URL here
-    const scriptURL = "https://script.google.com/macros/s/AKfycby-0PHNKPAI-eq766H9GF8aKQ5YDi5omxdx28s94LjnOxrQH7J5x-L6cw4YJGBP9wxxOQ/exec";
-
-    window.onload = () => {
-        if (localStorage.getItem("assignment_completed") === "true") {
-            document.getElementById('submitBtn').disabled = true;
-            document.getElementById('writingBox').disabled = true;
-            document.getElementById('blockMessage').style.display = 'block';
-        }
+    const students = {
+        "7A": ["Abarca Nuñez Florencia Ayelén", "Alfaro Cuevas Agustina Paz", "Argote Luza Amanda Leonor", "Arias Alegría Gustavo León", "Barrera León Antonia Paz", "Barriga Fernández Alex Eduardo", "Castillo Herrera Javier David", "Castro Mincone Emilia Alessandra", "Celis Canales Santiago", "Cortés Cabello Clemente Nicolás", "Del Río Fernández Santiago Isaac", "Fuentes Ramírez Alejandro Ignacio", "González Arriagada Joaquín Alonso", "González Yáñez Lorenzo Tomás", "Guerrero Bustamante Vicente", "Hinojosa Carrasco Victoria Antonia", "Hiplan Godoy Rafaella Francisca", "Iglesias Guerrero Maite Agustina", "Jiménez Monsalves Laura Elena", "Méndez Fernández Violeta Millaray", "Montenegro Uribarri Agustina Paz", "Muñoz Espinoza Mariano Emilio", "Neira Orellana Nicolás Andrés", "Norambuena Garcés Matías Clemente", "Núñez Zamora Florencia Antonia", "Pérez Escobar Emilia Andrea", "Ramírez Cartagena Mateo Ignacio", "Ramírez Oliva Amaro Andrés", "Reffer Horvath Ignacio Javier", "Retamal Leiva Maximiliano Antonio", "Reyes Bravo María Vicenta", "Reyes Urrea Alicia Cristina", "Sánchez Ramírez Cristobal Guillermo", "Veizaga Ruiz Darío Alonso", "Véliz Cortés Josefina Viviana"],
+        "7B": ["Álvarez de Araya Almarza Bruno Ignacio", "Araya Espinoza Bárbara Yudich", "Araya Seguel Javier Ignacio", "Arias Alegría Felipe Roberto", "Arriaza Marsh Paz Emilia", "Barbaste Escalante Emma Leonor", "Barrera Jaque Trinidad Ignacia", "Calderón Palma José Agustín", "Campusano Pérez Francisca Almudena", "Castro Jara Matías Ignacio", "Contreras Arriagada Juan Pablo", "Cortés Díaz Joaquín Alonso", "Díaz Cortés Gaspar Ignacio", "Espinoza Cornejo Fernanda Isidora", "Figueroa Cárdenas Rafaela Sofía", "Figueroa Salazar Cristóbal Javier", "Hernández Leiva Emiliana Catalina", "Lasserre Rodriguez Clara Belén", "Maira Péndola Facundo Alfonso", "Martini Sutherland Isabella Francesca Rosetta", "Moraga Martínez Fernanda Paz", "Neyra Anabalón Vicente Alonso", "Olea Leiva Elisa Magdalena", "Olivares Sánchez Pablo Ignacio", "Orellana García Cristóbal Felipe", "Oviedo Obreque Camila Antonia", "Pacheco Palma Matías Ignacio", "Palma Péndola Gonzalo Alonzo", "Pérez Madariaga Nicolás Maximiliano", "Reyes Briones Lucas Javier", "Saldivia San Martín Emilio Alberto", "Urrutia González Amanda Florencia", "Valdenegro Román Cristóbal Tomás", "Valdés Vergara Gastón Emilio", "Valverde Véliz Santiago Alonso", "Vásquez Reyes María José Valentina", "Wood Corrales Andrew Benjamín Buchanan"],
+        "7C": ["Acevedo Gutiérrez Agustín Emilio", "Aliaga Pennanen José Tomás Antonio", "Arévalo Jara Carla Ignacia", "Arrieta Angulo Felipe Esteban", "Blanco Contreras María Isidora", "Burgos Salazar Agustín Tomás", "Cano Morgado Rafael Elías", "Chávez González Elisa Isabella", "Contreras Ramos Helena Paz", "Dehnhardt Berríos Tomás Leon", "Dinamarca Aránguiz Rebeca Elena", "Flores Ravera Amalia Lourdes", "Lema Carrasco María Jesús", "Loaiza Vistoso María Isabel", "Mallea Aldunate Constanza Paz", "Marrujo Pardo Gisselle Andrea", "Montenegro Vargas Kiara", "Núñez Henríquez Guadalupe Ignacia", "Núñez Zapata Olivia Paz", "Ogaz Klauser Rosario Paz", "Orellana Beltrán Felipe Andrés", "Pinto Decencier Maximiliano Alonso", "Ponce Del Canto María Laura", "Ponce Quintanilla Laura Victoria", "Quezada Ibarra Eduardo Gabriel", "Reyes Alarcón Aimee Sarahi", "Román Burgos Monserrat Catalina", "Ruz Reyes Tomás Benjamín", "Sánchez Rodríguez Facundo León", "Squella Troncoso Agustín Enrique", "Suazo Miranda Clemente León", "Ulloa Vega Emilia Ignacia", "Vega Paz Catalina Renata", "Vergara Rojas Mariana Almendra Lucía", "Vines Zúñiga Edmundo André", "Yaksic Rivera Savka Milena", "Yáñez Saavedra Francisca Isidora"]
     };
+
+    function updateStudentList() {
+        const course = document.getElementById('courseSelect').value;
+        const studentSelect = document.getElementById('studentSelect');
+        studentSelect.innerHTML = '<option value="">Select your name</option>';
+        if (course) {
+            students[course].forEach(name => {
+                let opt = document.createElement('option');
+                opt.value = name;
+                opt.innerHTML = name;
+                studentSelect.appendChild(opt);
+            });
+            studentSelect.disabled = false;
+        } else {
+            studentSelect.disabled = true;
+        }
+    }
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycby-0PHNKPAI-eq766H9GF8aKQ5YDi5omxdx28s94LjnOxrQH7J5x-L6cw4YJGBP9wxxOQ/exec";
 
     document.getElementById('writingBox').addEventListener('input', function() {
         const words = this.value.trim().split(/\s+/).filter(w => w.length > 0).length;
@@ -186,81 +123,43 @@
 
     async function processSubmission() {
         const text = document.getElementById('writingBox').value.trim();
-        const fName = document.getElementById('firstName').value.trim();
-        const lName = document.getElementById('lastName').value.trim();
-        const course = document.getElementById('course').value.trim();
+        const fullName = document.getElementById('studentSelect').value;
+        const course = document.getElementById('courseSelect').value;
         const words = text.split(/\s+/).filter(w => w.length > 0);
 
-        if (!fName || !lName || !course || !text) return alert("Please fill in all the fields.");
-        if (words.length < 10) return alert("Your text is too short.");
+        if (!fullName || !course || !text) return alert("Please select your name and write the email.");
+        if (words.length < 10) return alert("Text too short.");
 
-        // PLAGIARISM CHECK
-        const forbidden = ["mars", "screws", "robot", "alien"];
-        if (forbidden.some(word => text.toLowerCase().includes(word))) {
-            return alert("❌ Please write a real reply to the email.");
-        }
+        const improve = []; const correct = [];
+        if (words.length < 40 || words.length > 60) improve.push(`Length: ${words.length} words. Target 40-60.`);
+        else correct.push("Word count correct.");
 
-        const improve = [];
-        const correct = [];
+        if (/\b(stay|hotel|house)\b/i.test(text)) correct.push("Suggested a place.");
+        else improve.push("Suggest where to stay.");
 
-        // 1. Word Count Check
-        if (words.length < 40 || words.length > 60) {
-            improve.push(`<span class="improve">Length:</span> Your text has ${words.length} words. Target: 40-60.`);
-        } else {
-            correct.push("Great job! You met the required word count.");
-        }
+        if (/\b(wear|suit|dress)\b/i.test(text)) correct.push("Suggested clothes.");
+        else improve.push("Suggest what to wear.");
 
-        // 2. Content Logic (Checking if questions were answered)
-        if (/\b(stay|hotel|apartment|house|place)\b/i.test(text)) {
-            correct.push("You suggested a place to stay.");
-        } else {
-            improve.push(`<span class="improve">Content:</span> Suggest where Maxi can stay (e.g., 'You can stay at a hotel').`);
-        }
-
-        if (/\b(wear|clothes|suit|dress|formal)\b/i.test(text)) {
-            correct.push("You mentioned what clothes to wear.");
-        } else {
-            improve.push(`<span class="improve">Content:</span> Tell Maxi what people usually wear to weddings.`);
-        }
-
-        if (/\b(buy|gift|present|give)\b/i.test(text)) {
-            correct.push("You suggested a gift for the couple.");
-        } else {
-            improve.push(`<span class="improve">Content:</span> Suggest a present to buy.`);
-        }
-
-        // 3. Connector Check
-        if (/\b(and|but|because|then|so)\b/i.test(text)) {
-            correct.push("Good use of connectors to link your ideas.");
-        } else {
-            improve.push(`<span class="improve">Connectors:</span> Try to use 'because', 'but', or 'and'.`);
-        }
-
-        // Render Feedback
-        document.getElementById('improveList').innerHTML = improve.map(i => `<li>${i}</li>`).join('') || "<li>Excellent work! You covered everything.</li>";
-        document.getElementById('correctList').innerHTML = correct.map(c => `<li>${c}</li>`).join('') || "<li>Try to follow the instructions more closely.</li>";
+        document.getElementById('improveList').innerHTML = improve.map(i => `<li class="improve">${i}</li>`).join('');
+        document.getElementById('correctList').innerHTML = correct.map(c => `<li class="correct">${c}</li>`).join('');
         document.getElementById('feedbackArea').style.display = 'block';
 
         const btn = document.getElementById('submitBtn');
-        btn.innerText = "Submitting...";
-        btn.disabled = true;
+        btn.innerText = "Submitting..."; btn.disabled = true;
 
         try {
             await fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify({ firstName: fName, lastName: lName, course: course, text: text }),
+                method: 'POST', mode: 'no-cors',
+                body: JSON.stringify({ name: fullName, course: course, text: text }),
                 headers: { 'Content-Type': 'application/json' }
             });
             localStorage.setItem("assignment_completed", "true");
-            alert("✅ Task submitted successfully!");
-            btn.innerText = "Task Submitted";
+            alert("✅ Tarea enviada!");
+            btn.innerText = "Submitted";
         } catch (e) {
-            alert("Submission error. See your feedback below.");
-            btn.disabled = false;
-            btn.innerText = "Retry Submission";
+            alert("Error al enviar, pero revisa tu feedback abajo.");
+            btn.disabled = false; btn.innerText = "Retry";
         }
-        document.getElementById('feedbackArea').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 </body>
